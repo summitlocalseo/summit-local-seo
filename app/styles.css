@@ -1,0 +1,805 @@
+/* Summit Local SEO — global styles */
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--color-off-white);
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+@keyframes pinPulse { 0%, 100% { transform: rotate(-45deg) scale(1); } 50% { transform: rotate(-45deg) scale(1.08); } }
+.pin-pulse { animation: pinPulse 2.2s ease-in-out infinite; }
+input, select, textarea, button { font-family: inherit; }
+ul { margin: 0; padding: 0; list-style: none; }
+input::placeholder, textarea::placeholder { color: #B4C0C6; }
+select:invalid { color: #B4C0C6; }
+
+a, button {
+  transition: color 220ms ease, background-color 220ms ease, opacity 220ms ease,
+    transform 260ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 260ms ease, border-color 220ms ease;
+}
+img, .image-cover { transition: transform 700ms cubic-bezier(0.22,0.61,0.36,1); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 var(--space-6); }
+.container-narrow { max-width: 720px; margin: 0 auto; padding: 0 var(--space-6); }
+.container-md { max-width: 960px; margin: 0 auto; padding: 0 var(--space-6); }
+
+/* ---------- reveal-on-scroll ---------- */
+[data-reveal="hidden"] { opacity: 0; transform: translateY(28px); }
+[data-reveal="visible"] { opacity: 1; transform: translateY(0); transition: opacity 800ms ease, transform 800ms ease; }
+[data-reveal-left="hidden"] { opacity: 0; transform: translateX(-36px); }
+[data-reveal-left="visible"] { opacity: 1; transform: translateX(0); transition: opacity 800ms ease, transform 800ms ease; }
+[data-reveal-right="hidden"] { opacity: 0; transform: translateX(36px); }
+[data-reveal-right="visible"] { opacity: 1; transform: translateX(0); transition: opacity 800ms ease, transform 800ms ease; }
+[data-line-reveal="visible"] { transform: scaleY(1) !important; transition: transform 600ms ease 350ms; }
+
+/* ---------- utility contact bar ---------- */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 31;
+  height: 38px; display: flex; align-items: center; justify-content: flex-end;
+  gap: var(--space-4); padding: 0 var(--space-6);
+  background: var(--color-mirage);
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.topbar a {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; color: rgba(255,255,255,0.78); text-decoration: none;
+}
+.topbar .divider { width: 1px; height: 15px; background: rgba(255,255,255,0.14); }
+
+/* ---------- header / nav ---------- */
+.site-header {
+  position: fixed; top: 38px; left: 0; right: 0; z-index: 30;
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--space-6);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 220ms ease, border-color 220ms ease;
+}
+.site-header.scrolled {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom-color: rgba(0,0,0,0.06);
+}
+.brand { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+.brand svg .peak-side { fill: #fff; transition: fill 220ms ease; }
+.site-header.scrolled .brand svg .peak-side { fill: var(--color-mirage); }
+.brand .divider { width: 1px; height: 30px; background: rgba(255,255,255,0.2); transition: background 220ms ease; }
+.site-header.scrolled .brand .divider { background: rgba(22,35,42,0.08); }
+.brand-text { display: flex; flex-direction: column; line-height: 1; }
+.brand-name { font-family: var(--font-display); font-weight: 600; font-size: 18.6px; letter-spacing: -0.8px; color: #fff; transition: color 220ms ease; }
+.site-header.scrolled .brand-name { color: #16232A; }
+.brand-sub { font-family: var(--font-body); font-weight: 500; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 3px; transition: color 220ms ease; }
+.site-header.scrolled .brand-sub { color: var(--color-slate); }
+
+.nav { display: flex; align-items: center; gap: var(--space-5); }
+.nav-links { display: flex; align-items: center; gap: var(--space-5); }
+.nav-link { font-size: 13.5px; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 160ms ease; }
+.site-header.scrolled .nav-link { color: var(--color-slate); }
+.nav-link[aria-current="page"] { color: var(--color-blaze); }
+.site-header.scrolled .nav-link[aria-current="page"] { color: var(--color-mirage); }
+
+.lang-toggle {
+  display: inline-flex; align-items: center; border: 0.5px solid rgba(255,255,255,0.35);
+  border-radius: 999px; overflow: hidden; height: 30px; transition: border-color 160ms ease;
+}
+.site-header.scrolled .lang-toggle { border-color: var(--color-border-input); }
+.lang-toggle button {
+  font-weight: 600; font-size: 11px; letter-spacing: 0.5px; padding: 0 var(--space-3); height: 100%;
+  border: none; cursor: pointer; background: transparent; color: var(--color-slate);
+}
+.lang-toggle button + button { border-left: 0.5px solid rgba(255,255,255,0.35); }
+.site-header.scrolled .lang-toggle button + button { border-left-color: var(--color-border-input); }
+.lang-toggle button.active { background: var(--color-mirage); color: #fff; }
+
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 500; font-size: 12px; padding: var(--space-3) var(--space-4);
+  background: var(--color-blaze); color: #fff; text-decoration: none;
+  border: 0.5px solid transparent;
+}
+
+.mobile-menu-btn { display: none; }
+
+/* hamburger icon: three bars that morph into an X when the menu is open */
+.hamburger { position: relative; width: 22px; height: 15px; }
+.hamburger span {
+  position: absolute; left: 0; width: 100%; height: 2px; border-radius: 1px;
+  background: #16232A;
+  transition: transform 280ms cubic-bezier(0.22,0.61,0.36,1), opacity 180ms ease;
+}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 6.5px; }
+.hamburger span:nth-child(3) { top: 13px; }
+.mobile-menu-btn.active .hamburger span { background: #fff; }
+.mobile-menu-btn.active .hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.mobile-menu-btn.active .hamburger span:nth-child(2) { opacity: 0; }
+.mobile-menu-btn.active .hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* mobile menu overlay — drops down from behind the header, fading in */
+.mobile-menu-scrim {
+  position: fixed; inset: 0; z-index: 39; background: rgba(7,22,20,0.55); backdrop-filter: blur(2px);
+  opacity: 0; visibility: hidden;
+  transition: opacity 240ms ease, visibility 0ms linear 240ms;
+}
+.mobile-menu-scrim.open {
+  opacity: 1; visibility: visible;
+  transition: opacity 240ms ease;
+}
+.mobile-menu {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+  background: var(--color-mirage); padding: var(--space-7) var(--space-4) var(--space-5);
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  box-shadow: 0 24px 50px -20px rgba(0,0,0,0.5);
+  transform: translateY(-100%); opacity: 0; visibility: hidden; pointer-events: none;
+  transition: transform 320ms cubic-bezier(0.22,0.61,0.36,1), opacity 240ms ease, visibility 0ms linear 320ms;
+}
+.mobile-menu.open {
+  transform: translateY(0); opacity: 1; visibility: visible; pointer-events: auto;
+  transition: transform 320ms cubic-bezier(0.22,0.61,0.36,1), opacity 240ms ease;
+}
+.mobile-menu a.mobile-link {
+  font-family: var(--font-display); font-weight: 600; font-size: 21px; letter-spacing: -0.4px;
+  color: #fff; text-decoration: none; padding: var(--space-4) 0;
+}
+.mobile-menu .mobile-cta {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; max-width: 300px; font-weight: 500; font-size: 15px; padding: var(--space-3) var(--space-4);
+  margin-top: var(--space-4); background: var(--color-blaze); color: #fff; text-decoration: none;
+}
+/* language switcher inside the mobile menu — a native select, dark-themed;
+   the globe sits inside the box itself as a leading background icon,
+   square corners (no pill shape) */
+.mobile-menu .mobile-lang { display: flex; align-items: center; margin-top: var(--space-4); }
+.mobile-menu .mobile-lang .lang-select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  font-family: var(--font-body); font-weight: 600; font-size: 14px; letter-spacing: 0.2px;
+  color: #fff; background-color: transparent;
+  border: 0.5px solid rgba(255,255,255,0.35); border-radius: 0;
+  min-height: 54px; padding: 14px 46px 14px 48px; cursor: pointer;
+  background-image:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="%23FFFFFF" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="%23FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6l6 -6"/></svg>');
+  background-repeat: no-repeat, no-repeat;
+  background-position: left 14px center, right 16px center;
+}
+.mobile-menu .mobile-lang .lang-select option { color: #16232A; background: #fff; }
+[hidden] { display: none !important; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-3);
+  font-family: var(--font-body); font-weight: 500; font-size: 14px;
+  padding: var(--space-3) var(--space-5); text-decoration: none; border: 0.5px solid transparent;
+  cursor: pointer; white-space: nowrap;
+}
+.btn-primary { background: var(--color-blaze); color: #fff; }
+.btn-dark { background: var(--color-mirage); color: #fff; }
+.btn-forest { background: var(--forest); color: #fff; }
+.btn-outline { background: transparent; color: var(--color-mirage); border-color: var(--color-mirage); }
+.btn-link {
+  background: none; border: none; border-bottom: 1px solid var(--color-blaze);
+  color: var(--color-blaze); padding: 2px 0; border-radius: 0; font-weight: 500; font-size: 13px;
+}
+.btn-sm { padding: 12px 24px; font-size: 13px; }
+.btn-full { width: 100%; }
+
+/* ---------- eyebrow / section headings ---------- */
+.eyebrow {
+  display: inline-block; font-weight: 600; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--color-blaze);
+}
+h1, h2, h3 { font-family: var(--font-display); color: var(--color-mirage); margin: 0; }
+
+/* ---------- hero (dark, image + gradient) ---------- */
+.hero-dark {
+  position: relative; overflow: hidden;
+  /* golden-ratio pair: top:bottom = 144:89 ≈ φ (1.618) */
+  padding: var(--space-8) var(--space-6) var(--space-7);
+  background-size: cover; background-position: center;
+}
+.hero-dark.hero-tall {
+  /* golden-ratio pair: top:bottom = 233:144 ≈ φ, one Fibonacci step up */
+  padding: var(--space-9) var(--space-6) var(--space-8);
+}
+.hero-dark .hero-inner { max-width: 1080px; margin: 0 auto; position: relative; z-index: 2; }
+.hero-dark.hero-centered .hero-inner { max-width: 720px; text-align: center; }
+.hero-dark h1 {
+  font-weight: 600; font-size: 44px; letter-spacing: -1.8px; line-height: 1.05;
+  color: #fff; margin: 16px 0 0; max-width: 620px;
+}
+.hero-dark.hero-centered h1 { margin: 0 auto; }
+.hero-dark p.hero-sub {
+  font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.7);
+  max-width: 480px; margin: 20px 0 0;
+}
+
+/* ---------- section wrappers ---------- */
+.section { padding: var(--space-7) var(--space-6); }
+.section-off { background: var(--color-off-white); }
+.section-white { background: var(--color-white); }
+.section-sand { background: var(--color-wild-sand); }
+.section-dark { background: var(--color-mirage); }
+.section-lead { max-width: 620px; margin-bottom: var(--space-6); }
+.section-lead.center { max-width: 560px; margin: 0 auto var(--space-6); text-align: center; }
+.section h2 { font-weight: 600; font-size: 30px; letter-spacing: -1.1px; line-height: 1.1; margin-top: 12px; }
+
+/* ---------- value prop cards (home, overlapping hero) ---------- */
+.value-props {
+  position: relative; z-index: 5; margin-top: calc(var(--space-6) * -1);
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-5);
+  max-width: 900px; margin-left: auto; margin-right: auto;
+}
+.value-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-3);
+  padding: var(--space-4) var(--space-4); background: var(--color-white); border: 0.5px solid var(--color-border-card);
+  border-top: 5px solid var(--forest);
+  box-shadow: 0 18px 44px -30px rgba(8,55,49,0.22), 0 6px 16px -16px rgba(22,35,42,0.16);
+  transition: background 220ms ease, transform 300ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 300ms ease;
+}
+.value-card .icon { flex-shrink: 0; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; color: var(--forest); }
+.value-card .title { display: block; font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: -0.4px; color: var(--color-mirage); }
+.value-card .sub { display: block; font-size: 12.5px; line-height: 1.5; color: var(--color-slate); margin-top: 8px; }
+
+/* ---------- steps (how it works / audit next steps) ---------- */
+/* original design: icon/line on the left, text to the right, connecting
+   line between steps — matches the Claude Design source exactly */
+.steps { margin-top: var(--space-5); display: flex; flex-direction: column; }
+.step { display: flex; gap: var(--space-4); }
+.step-marker { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; align-self: stretch; }
+.step-num {
+  flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--forest-chip); color: var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 4px rgba(7,70,68,0.06); z-index: 1;
+}
+.step-line {
+  flex: 1; width: 2px; background: var(--color-border-input);
+  margin: var(--space-1) 0; transform-origin: top; transform: scaleY(0);
+}
+.step-body { padding-bottom: var(--space-5); margin-top: 2px; }
+.step-title { font-family: var(--font-display); font-weight: 600; font-size: 15.5px; letter-spacing: -0.3px; color: var(--color-mirage); margin-bottom: 7px; }
+.step-text { font-size: 13px; line-height: 1.65; color: var(--color-slate); max-width: 280px; }
+
+/* Home "How it works" uses a distinct outlined-number variant, not the filled icon badge above.
+   Gap/padding started at the original design's exact values (28px / 48px),
+   tightened further here per an explicit request to make it more compact
+   on desktop. */
+.steps-numbered .step { gap: 18px; }
+.steps-numbered .step-num {
+  width: 44px; height: 44px; background: none; box-shadow: none;
+  border: 1px solid var(--color-border-strong);
+  font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: 0.5px; color: var(--color-mirage);
+}
+.steps-numbered .step-line { width: 1px; }
+.steps-numbered .step-body { padding-bottom: 32px; margin-top: 0; }
+.steps-numbered .step-title { font-size: 17px; margin-bottom: 12px; }
+.steps-numbered .step-text { font-size: 13.5px; line-height: 1.7; max-width: none; }
+
+/* ---------- cards grid (value columns w/ hairline dividers) ---------- */
+.card-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; border-top: 0.5px solid var(--color-border-card); }
+.card-col {
+  padding: var(--space-5) var(--space-5); border-right: 0.5px solid var(--color-border-card);
+  display: flex; flex-direction: column; min-height: 380px;
+  transition: opacity 800ms ease, transform 800ms ease, background-color 300ms ease;
+}
+.card-col:last-child { border-right: none; }
+.card-col h3 { font-weight: 600; font-size: 23px; letter-spacing: -0.6px; line-height: 1.12; margin: 22px 0 14px; }
+.card-col p { font-size: 13px; line-height: 1.65; color: var(--color-slate); margin: 0; }
+.card-col .read-more {
+  margin-top: auto; display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 600; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--color-mirage); text-decoration: none; transition: gap 160ms ease;
+}
+
+/* ---------- forms ---------- */
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.field label { font-weight: 500; font-size: 11.5px; letter-spacing: 0.3px; color: var(--color-ink); }
+.field input, .field select, .field textarea {
+  font-size: 13.5px; color: var(--color-ink); background: var(--color-white);
+  padding: var(--space-3) var(--space-3); border: 0.5px solid var(--color-border-input); outline: none; width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--color-blaze); }
+.field select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%238A9BA3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6l6 -6"/></svg>');
+  background-repeat: no-repeat; background-position: right 12px center;
+}
+.field textarea { resize: vertical; line-height: 1.6; }
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+.form-note { font-size: 12px; color: var(--color-slate); text-align: center; }
+.form-error { font-size: 12.5px; color: #B3261E; text-align: center; display: none; }
+.form-error.visible { display: block; }
+.form-sent {
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-3); padding: var(--space-6) var(--space-3);
+}
+.form-sent .check-badge {
+  width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: var(--color-blaze);
+}
+.form-sent .title { font-family: var(--font-display); font-weight: 600; font-size: 26px; letter-spacing: -0.6px; color: var(--color-mirage); }
+.form-sent p { font-size: 14px; line-height: 1.7; color: var(--color-slate); max-width: 340px; margin: 0; }
+
+/* ---------- audit form card ---------- */
+.audit-steps-col { order: 1; }
+.audit-form-col { order: 2; }
+.audit-form-card { background: var(--color-white); border: 0.5px solid var(--color-border-card); box-shadow: 0 24px 60px -30px rgba(7,70,68,0.4); }
+.audit-form-header {
+  display: flex; align-items: center; gap: 16px; padding: 24px 40px;
+  background: var(--color-wild-sand); border-bottom: 0.5px solid var(--color-border-card);
+}
+.audit-form-header .icon-badge {
+  flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  background: var(--forest); color: #fff;
+}
+.audit-form-header p { font-size: 14px; line-height: 1.6; color: var(--color-mirage); margin: 0; }
+.audit-form-body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-4); }
+.audit-contact-row { margin-top: var(--space-1); padding-top: var(--space-4); border-top: 0.5px solid var(--color-border-card); }
+.audit-contact-row .label { font-size: 12px; color: var(--color-slate); text-align: center; margin-bottom: var(--space-3); }
+.audit-contact-links { display: flex; justify-content: center; gap: var(--space-5); flex-wrap: wrap; }
+.audit-contact-links a {
+  display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500;
+  color: var(--color-mirage); text-decoration: none;
+}
+
+/* ---------- pricing ---------- */
+.pricing-grid { max-width: 1000px; margin: 0 auto; background: var(--color-wild-sand); padding: var(--space-4); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); align-items: stretch; }
+.pricing-card { border: 0.5px solid var(--color-border-card); padding: var(--space-5) var(--space-5); display: flex; flex-direction: column; position: relative; transition: border-color 220ms ease, box-shadow 220ms ease, opacity 800ms ease, transform 800ms ease; }
+.pricing-card.featured { background: var(--color-white); border: none; box-shadow: 0 6px 16px -12px rgba(7,70,68,0.2); }
+.pricing-badge {
+  position: absolute; top: 26px; right: 28px; display: inline-flex; align-items: center; gap: 5px;
+  font-weight: 600; font-size: 9.5px; letter-spacing: 0.3px; color: var(--forest);
+  background: var(--color-wild-sand); padding: var(--space-1) var(--space-3);
+}
+.pricing-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--color-mirage); }
+.pricing-icon.gradient { background: linear-gradient(135deg, var(--forest), var(--color-blaze)); }
+.pricing-name { font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.4px; color: var(--color-mirage); margin: 20px 0 4px; }
+.pricing-tagline { font-size: 12.5px; line-height: 1.6; color: var(--color-slate); margin: 0; }
+.pricing-toggle { display: inline-flex; align-items: center; gap: var(--space-2); margin-top: var(--space-3); }
+.pricing-toggle-label { font-weight: 600; font-size: 10.5px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--color-slate); }
+.pricing-toggle-label.active { color: var(--color-mirage); }
+.pricing-toggle-save { font-weight: 600; font-size: 8.5px; letter-spacing: 0.3px; color: var(--forest); background: var(--color-wild-sand); padding: 2px 6px; margin-left: 5px; }
+.toggle-switch { width: 36px; height: 20px; border-radius: 999px; border: none; padding: 3px; cursor: pointer; background: var(--color-border-input); display: inline-flex; align-items: center; transition: background 160ms ease; }
+.toggle-switch.on { background: var(--forest); }
+.toggle-switch .knob { width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.25); transform: translateX(0px); transition: transform 160ms ease; }
+.toggle-switch.on .knob { transform: translateX(16px); }
+.pricing-amount { display: flex; align-items: flex-end; gap: 6px; margin: 13px 0 3px; }
+.pricing-amount .num { font-family: var(--font-display); font-weight: 700; font-size: 42px; letter-spacing: -1.5px; line-height: 1; color: var(--color-mirage); }
+.pricing-amount .period { font-size: 14px; color: var(--color-slate); padding-bottom: 6px; }
+.pricing-bill-note { font-size: 11px; color: var(--color-slate); margin-bottom: 24px; }
+.pricing-divider { height: 1px; background: var(--color-border-strong); margin: 24px 0; }
+.pricing-feat-intro { font-weight: 600; font-size: 11.5px; color: var(--color-mirage); margin-bottom: 14px; }
+.pricing-feats { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+.pricing-feats li { display: flex; align-items: flex-start; gap: 9px; font-size: 12.5px; line-height: 1.5; color: var(--color-ink); }
+.pricing-feats .check { flex-shrink: 0; margin-top: 2px; color: var(--color-slate); }
+.guarantees { max-width: 940px; margin: var(--space-4) auto 0; display: flex; justify-content: center; gap: var(--space-5); flex-wrap: wrap; }
+.guarantees .item { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: var(--color-slate); }
+.guarantees .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--forest); display: flex; align-items: center; justify-content: center; }
+
+.incl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.incl-item .icon { display: flex; align-items: center; color: var(--forest); margin-bottom: 14px; }
+.incl-item .title { font-family: var(--font-display); font-weight: 500; font-size: 17px; letter-spacing: -0.3px; color: var(--color-mirage); margin-bottom: 8px; }
+.incl-item p { font-size: 13px; line-height: 1.65; color: var(--color-slate); margin: 0; }
+
+/* ---------- CTA band ---------- */
+.cta-band {
+  position: relative; overflow: hidden; padding: var(--space-7) var(--space-6); background-size: cover; background-position: center;
+}
+.cta-band .cta-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; }
+.cta-band h2 { font-weight: 600; font-size: 34px; letter-spacing: -1.2px; line-height: 1.12; color: #fff; margin: 0 0 var(--space-3); }
+.cta-band p { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.7); max-width: 460px; margin: 0 auto var(--space-5); }
+
+/* ---------- footer ---------- */
+.site-footer { background: var(--color-mirage); padding: var(--space-6) var(--space-6) var(--space-5); }
+.footer-top {
+  max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--space-5);
+  padding-bottom: var(--space-5); border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-tagline { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.55); max-width: 240px; margin: var(--space-3) 0 0; }
+.footer-heading { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: var(--space-3); }
+.footer-links { display: flex; flex-direction: column; gap: var(--space-2); }
+.footer-links a, .footer-links span { font-size: 13px; color: rgba(255,255,255,0.7); text-decoration: none; }
+.footer-bottom { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-4); flex-wrap: wrap; gap: var(--space-3); }
+.footer-bottom span { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+/* ---------- FAQ ---------- */
+.faq-item { border-bottom: 0.5px solid var(--color-border-card); }
+.faq-question {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  background: none; border: none; cursor: pointer; padding: var(--space-4) 0; text-align: left;
+  font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--color-mirage);
+}
+.faq-chevron { flex-shrink: 0; transition: transform 220ms ease; color: var(--color-slate); }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 280ms ease; }
+.faq-item.open .faq-answer { max-height: 300px; }
+.faq-answer p { font-size: 13.5px; line-height: 1.7; color: var(--color-slate); margin: 0 0 22px; max-width: 620px; }
+
+/* ---------- testimonial ---------- */
+.testimonial { background: var(--color-deep-sea); padding: var(--space-7) var(--space-6); }
+.testimonial-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.testimonial-stars { display: flex; justify-content: center; gap: var(--space-1); margin-bottom: var(--space-4); color: var(--color-blaze); }
+.testimonial-quote { font-family: var(--font-display); font-weight: 500; font-size: 26px; letter-spacing: -0.6px; line-height: 1.3; color: #fff; margin: 0; }
+.testimonial-author { margin-top: var(--space-5); display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+.testimonial-author .name { font-size: 14px; color: #fff; }
+.testimonial-author .role { font-size: 12px; color: rgba(255,255,255,0.55); }
+
+/* ---------- generic photo frame ---------- */
+.photo-frame { width: 100%; height: 100%; object-fit: cover; display: block; border: 0.5px solid var(--color-border-card); }
+
+/* ---------- founder placeholder (no fabricated likeness) ---------- */
+.founder-photo-slot {
+  position: relative; min-height: 480px; background: var(--forest-chip);
+  display: flex; align-items: center; justify-content: center; border: 0.5px solid var(--color-border-card);
+}
+.founder-photo-slot .monogram { font-family: var(--font-display); font-weight: 600; font-size: 96px; letter-spacing: -2px; color: var(--forest); opacity: 0.35; }
+.founder-caption {
+  position: absolute; bottom: 0; left: 0; background: var(--forest); padding: var(--space-4) var(--space-4);
+}
+.founder-caption .name { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.3px; color: #fff; }
+.founder-caption .role { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+/* ================= RESPONSIVE ================= */
+/* Tablet and down: nav collapses, multi-column layouts stack and centre.
+   Real section backgrounds in the markup are .section-off/.section-white/
+   .section-sand/.section-dark (never the bare utility name), so every
+   selector below targets those literal classes — not a generic ".section"
+   that nothing in the HTML actually carries. */
+@media (max-width: 860px) {
+  /* contact info moves here — a persistent bar at the very top of the page —
+     instead of being buried inside the hamburger menu */
+  .topbar {
+    height: 34px; padding: 0 var(--space-4); gap: var(--space-3); justify-content: center;
+  }
+  .topbar a { font-size: 11px; }
+  .site-header { top: 34px; height: 60px; padding: 0 var(--space-4); }
+  /* the header — logo + hamburger/X button — stays above the dropped-down
+     menu instead of being covered by it, so the button is still visible
+     (and clickable) to close the menu; forced to the same dark background
+     as the menu panel so there's no colour seam regardless of scroll state */
+  .site-header.menu-open {
+    z-index: 41; background: var(--color-mirage) !important;
+    border-bottom-color: transparent !important;
+  }
+  .site-header.menu-open .brand svg .peak-side { fill: #fff; }
+  .site-header.menu-open .brand .divider { background: rgba(255,255,255,0.2); }
+  .site-header.menu-open .brand-name { color: #fff; }
+  .site-header.menu-open .brand-sub { color: rgba(255,255,255,0.7); }
+  .nav-links, .lang-toggle, .nav-cta { display: none; }
+  .mobile-menu-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; background: none; border: none; cursor: pointer;
+  }
+
+  /* every real section carries its own inline padding (that's the pattern
+     used throughout these pages), which beats a plain class rule — so these
+     overrides need !important to actually take effect on mobile */
+  .section-off, .section-white, .section-sand, .section-dark, .site-footer,
+  .cta-band, .testimonial, #services, #pricing-preview, .hero-dark {
+    padding-left: var(--space-4) !important; padding-right: var(--space-4) !important;
+    text-align: center;
+  }
+  .section-off, .section-white, .section-sand, .section-dark, .site-footer,
+  .cta-band, .testimonial, #services, #pricing-preview {
+    padding-top: var(--space-6) !important; padding-bottom: var(--space-6) !important;
+  }
+  /* golden-ratio pairs, one Fibonacci step down from the desktop hero padding —
+     plus the 34px topbar now sitting above the fixed header, so the heading
+     still clears both bars instead of tucking underneath them */
+  .hero-dark { padding-top: calc(var(--space-7) + 34px) !important; padding-bottom: var(--space-6) !important; }
+  .hero-dark.hero-tall { padding-top: calc(var(--space-8) + 34px) !important; padding-bottom: var(--space-7) !important; }
+  .hero-dark .hero-inner { max-width: 460px; margin-left: auto; margin-right: auto; }
+  .hero-dark h1 { margin-left: auto; margin-right: auto; }
+  .hero-dark p.hero-sub { margin-left: auto; margin-right: auto; }
+
+  /* every two/three/four-column grid — named component classes AND the
+     plain .container the Home/Audit inline-style grids use — becomes one
+     centred column */
+  .value-props, .card-row, .pricing-grid, .pricing-grid-preview, .incl-grid,
+  .form-grid-2, .footer-top, .approach-grid, .founder-grid, .industries-grid,
+  .industries-list, .services-grid, .preview-feat-list,
+  .container, .container-md, .container-narrow {
+    /* minmax(0, 1fr), not bare 1fr — a bare 1fr track has an implicit
+       min-width of "auto" (its content's min-content size), so a card with
+       wide unbreakable content (checklist + price/CTA row) blows the track
+       out past the container instead of shrinking to fit, shifting the
+       whole card visibly off-centre to the right */
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: var(--space-5) !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+  }
+  .preview-feat-list { gap: var(--space-3) !important; }
+  .value-props > *, .pricing-grid-preview > * {
+    justify-self: center; width: 100%; max-width: 460px; min-width: 0;
+  }
+  .value-props { margin-top: 0; }
+
+  /* Home "about" copy column reads better left-aligned than centred —
+     matches the .long-copy treatment used elsewhere for multi-line text */
+  .seo-grid { grid-template-columns: minmax(0, 1fr) !important; gap: var(--space-5) !important; padding-left: 0 !important; text-align: left !important; }
+  /* that column also carries its own inline padding-left — the desktop
+     gutter between it and the (now hidden) map mockup — which otherwise
+     shifts all its text ~55px right of where every other section starts */
+  .seo-grid > div:last-child { padding-left: 0 !important; }
+
+  /* FAQ lead + answers stay left-aligned (questions already force
+     text-align:left via .faq-question, this matches the answers/lead to it) */
+  #faq .container { text-align: left !important; }
+
+  /* footers read as a left-aligned column stack, not centred, once collapsed */
+  .footer-top, .footer-bottom { text-align: left !important; }
+  .footer-top > * { justify-self: start !important; width: 100%; max-width: 460px; }
+  .footer-bottom { justify-content: flex-start !important; }
+
+  /* form field labels stay left-aligned even inside a centred grid */
+  .field, .field label { text-align: left !important; }
+
+  /* audit page: form comes before "next steps" on phones only — desktop keeps the original order */
+  .audit-form-col { order: -1 !important; }
+  /* ...and no longer overlaps the hero above it — the -94px pull-up is a
+     desktop-only trick; on phones the form sits in normal flow */
+  .audit-form-col { margin-top: 0 !important; }
+  /* "Et ensuite ?" lead paragraph carries an inline margin (no auto) for its
+     desktop narrow-column layout — that beats the general centring rule
+     below since inline always wins over a non-!important external rule */
+  .audit-steps-col p { margin-left: auto !important; margin-right: auto !important; }
+
+  /* home value-prop cards (the 3 overlapping the hero): a bit more air
+     between the title and the description below it */
+  .value-card .sub { margin-top: var(--space-2); }
+
+  /* steps: back to the original left icon-column + connecting line design
+     (matching desktop) — the parent .container still forces text-align:center
+     for other grids, so the step title/text need their own left override */
+  .steps { text-align: left !important; }
+  /* ...with tighter spacing than desktop — one token step down the scale */
+  .steps { margin-top: var(--space-4) !important; }
+  /* audit page steps specifically: a bit more air between the icon and the
+     text (home's steps-numbered already sits at --space-4, unaffected here) */
+  .step { gap: var(--space-4) !important; }
+  .step-body { padding-bottom: var(--space-4) !important; }
+  .steps-numbered .step { gap: var(--space-4) !important; }
+  .steps-numbered .step-body { padding-bottom: var(--space-5) !important; }
+
+  /* home pricing-preview cards: name/tagline left-aligned, matching the
+     checklist and price row (this was still inheriting centred text-align
+     from an ancestor, left over from before the centering request) */
+  .preview-name, .preview-tagline { text-align: left !important; }
+
+  /* pricing page: the two plans read as separate cards, not one shared
+     sand-coloured block — each card keeps its own background/border so it
+     still reads correctly once un-wrapped; desktop is untouched */
+  .pricing-grid { background: none !important; padding: 0 !important; gap: var(--space-5) !important; }
+  /* left-aligned, matching the original design — not centred */
+  .pricing-card { background: var(--color-wild-sand); align-items: flex-start !important; text-align: left !important; }
+  .pricing-card.featured { background: var(--color-white); }
+  /* that fixed-height spacer only exists to align prices across the two
+     side-by-side desktop cards — meaningless once they're stacked */
+  .pricing-align-spacer { height: 0 !important; }
+  .guarantees .item { justify-content: center; }
+  /* less space between the CTA button and the "what's included" list below it */
+  .pricing-divider { margin: 12px 0 !important; }
+
+  /* pricing page "always included" cards: icon stacks above centred title/text */
+  .incl-item { display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; }
+  .incl-item .icon { justify-content: center !important; margin-bottom: var(--space-2) !important; }
+
+  /* pricing card "Recommandé" badge: sits above the icon instead of floating
+     in the corner (which doesn't work once the card is centred on mobile) */
+  .pricing-badge { position: static !important; order: -1; margin: 0 0 var(--space-3) !important; }
+
+  /* section leads and any left-aligned copy column stay readable but centred */
+  .section-lead, .section-lead.center { max-width: 460px; margin-left: auto; margin-right: auto; text-align: center; }
+  /* long-form body copy (4+ lines) stays left-aligned — centered ragged
+     edges make multi-line paragraphs harder to read on a narrow column */
+  .long-copy { text-align: left !important; max-width: none !important; }
+  .founder-quote { display: inline-block; max-width: 420px; text-align: left; }
+  .section-off p, .section-white p, .section-sand p, .section-dark p, .site-footer p,
+  .cta-band p, .testimonial p {
+    max-width: 460px; margin-left: auto; margin-right: auto;
+  }
+  /* .pricing-tagline is a <p>, so it was being swept into the auto-margin
+     centring rule above even though the rest of the (left-aligned) pricing
+     card ignores it — auto margins on a flex item override the parent's
+     align-items, which is why only this one element drifted to the centre */
+  .pricing-tagline { margin-left: 0 !important; margin-right: 0 !important; max-width: none !important; }
+  /* the divider has no content of its own, so under align-items:flex-start
+     it collapses to 0 width instead of spanning the card */
+  .pricing-divider { align-self: stretch; }
+
+  /* flex columns that relied on left text-align inside a 2-col grid now need
+     their own centring once that grid collapses to one column */
+  .stack-col-mobile { align-items: center !important; }
+  [style*="align-self: flex-start"] { align-self: center !important; }
+  [style*="justify-self: flex-start"] { justify-self: center !important; }
+
+  /* the "why choose us" hairline card row */
+  .card-col { min-height: 0; padding: var(--space-5) var(--space-4); border-right: none; align-items: center; border-top: 0.5px solid var(--color-border-card); }
+  .card-row { border-top: none; }
+  /* the "read more"/CTA link uses margin-top:auto to push to the bottom of
+     a tall desktop card — with min-height:0 on mobile there's no leftover
+     space for "auto" to consume, so it needs a real gap of its own */
+  .card-col .read-more, .card-cta { margin-top: var(--space-5) !important; }
+
+  /* decorative Google-Maps demo mockup is too dense to reflow at this width —
+     matches the source design's own mobile treatment (hidden below tablet) */
+  .demo-mockup { display: none; }
+
+  /* About "our approach" — sharp clipped photo overlay doesn't reflow at
+     this width either; drop it to a plain full-width photo under the grid */
+  .approach-wrap { margin-top: var(--space-4); }
+  .approach-grid { width: 100% !important; gap: 8px !important; }
+  /* "the founder" eyebrow/heading stay left-aligned instead of inheriting
+     the centred text-align that the collapsed 2-col grid applies generally
+     (the long-copy paragraphs already have their own left-align exception) */
+  .founder-grid > div:last-child { text-align: left !important; }
+  /* no slide-in reveal on phones — just show it in place; desktop keeps
+     the left-slide animation untouched */
+  .approach-grid { opacity: 1 !important; transform: none !important; }
+  /* "what guides us" cards: each item's own padding + internal icon/title/text
+     margins were sized for a 3-across desktop row — tighten for a stacked list */
+  .approach-grid > div { padding: var(--space-4) var(--space-4) !important; }
+  .approach-grid > div > div:first-child { margin-bottom: var(--space-3) !important; }
+  .approach-grid > div > div:nth-child(2) { margin-bottom: var(--space-2) !important; }
+  .approach-photo {
+    position: static !important; width: 100% !important; height: 220px !important;
+    clip-path: none !important; margin-top: var(--space-4);
+  }
+  /* taller, more vertical crop of the founder photo on phones */
+  .founder-photo-slot { min-height: 440px; }
+  .founder-photo-slot .photo-frame { object-fit: cover; object-position: 50% 30%; }
+
+  /* home "about" map/search mockup: shown on phones as a true 1:1 scaled
+     copy of the desktop design (533x594px), rather than a hand-rebuilt
+     approximation — scale() renders the exact same layout, just smaller.
+     the scale is fluid (not a fixed factor) so it always fills the full
+     width out to the section's padding on any phone, not just the one
+     width it happened to be calibrated against.
+     margin-bottom pulls up the now-empty space transform leaves behind
+     (transform doesn't shrink the box's own layout footprint). */
+  .demo-mockup {
+    display: block !important;
+    width: 533px; height: 594px;
+    position: relative; left: 50%; margin-left: -266.5px;
+    transform: scale(calc((100vw - 36px) / 533px)); transform-origin: top center;
+    margin-bottom: calc((100vw - 36px) / 533px * 594px - 594px);
+  }
+
+  /* "what's included" skyscraper photo: shift the crop so more of the
+     tower is visible instead of mostly empty sky */
+  #services { background-position: 60% 35% !important; }
+
+  /* forms: full width, comfortable single column, no zoom-on-focus on iOS */
+  form { width: 100%; max-width: 420px; margin-left: auto; margin-right: auto; }
+  form input, form select, form textarea, form button { width: 100%; font-size: 16px; }
+  .field input, .field select, .field textarea { padding: var(--space-3); min-height: 46px; }
+  .field textarea { min-height: 110px; }
+  .audit-form-card, [data-form-wrapper] { position: static; width: 100%; max-width: 440px; margin: 0 auto; padding: var(--space-4) var(--space-4); justify-self: center; }
+  .audit-form-body { padding: var(--space-4); }
+
+  /* touch targets */
+  .btn, .nav-cta, .mobile-cta { min-height: 46px; }
+  .btn-sm { min-height: 40px; padding: var(--space-2) var(--space-4); font-size: 13px; }
+  .toggle-switch { width: 44px; height: 26px; }
+  .toggle-switch .knob { width: 18px; height: 18px; }
+  .toggle-switch.on .knob { transform: translateX(18px); }
+  .faq-question { padding: var(--space-4) var(--space-1); min-height: 44px; }
+
+  h1, .hero-dark h1 { font-size: 34px; letter-spacing: -1.1px; line-height: 1.1; }
+  h2, .section-off h2, .section-white h2, .section-sand h2, .section-dark h2 { font-size: 26px; letter-spacing: -0.7px; line-height: 1.18; }
+  h3 { font-size: 21px; line-height: 1.25; }
+  p, li { font-size: 16px; line-height: 1.62; }
+  .step-text, .card-col p, .value-card .sub { font-size: 14px; }
+}
+
+@media (max-width: 460px) {
+  .section-off, .section-white, .section-sand, .section-dark, .site-footer,
+  .cta-band, .testimonial, #services, #pricing-preview, .hero-dark {
+    padding-left: var(--space-3) !important; padding-right: var(--space-3) !important;
+  }
+  h1, .hero-dark h1 { font-size: 28px; }
+  h2, .section-off h2, .section-white h2, .section-sand h2, .section-dark h2 { font-size: 22px; }
+  p, li { font-size: 15.5px; }
+  .founder-photo-slot { min-height: 380px; }
+  .founder-photo-slot .monogram { font-size: 72px; }
+}
+
+/* =====================================================================
+   PHONE (≤767px): typography & spacing refinements only.
+   Layered on top of the 860px/460px breakpoints above — this block is
+   scoped entirely to max-width:767px, so nothing here touches desktop.
+   It wins the cascade for any phone-width viewport (including ≤460px)
+   purely by coming later in source order, on the same selectors.
+   ===================================================================== */
+@media (max-width: 767px) {
+
+  /* ---------- typography ---------- */
+  h1, .hero-dark h1 { font-size: 34px; line-height: 1.18; }
+  h2, .section-off h2, .section-white h2, .section-sand h2, .section-dark h2 { font-size: 26px; line-height: 1.25; }
+  h3 { font-size: 20px; line-height: 1.3; }
+  p, li { font-size: 16px; line-height: 1.55; }
+  /* small text / captions — meta copy, not the tiny uppercase eyebrow labels */
+  .form-note, .footer-tagline, .footer-links a, .footer-links span, .footer-bottom span,
+  .pricing-tagline, .pricing-bill-note, .testimonial-author .name, .testimonial-author .role,
+  .step-text, .card-col p, .value-card .sub, .incl-item p, .faq-answer p, .founder-caption .role {
+    font-size: 14px; line-height: 1.4;
+  }
+
+  /* ---------- section padding: keep content off the screen edges ---------- */
+  .section-off, .section-white, .section-sand, .section-dark, .site-footer,
+  .cta-band, .testimonial, #services, #pricing-preview {
+    padding-top: 28px !important; padding-bottom: 28px !important;
+    padding-left: 18px !important; padding-right: 18px !important;
+  }
+  .hero-dark { padding-left: 18px !important; padding-right: 18px !important; }
+  /* hero keeps more top clearance than a plain section — the fixed header
+     (60px) plus the contact bar above it (34px) would otherwise overlap
+     the heading */
+  .hero-dark { padding-top: 110px !important; padding-bottom: 40px !important; }
+  .hero-dark.hero-tall { padding-top: 122px !important; padding-bottom: 48px !important; }
+  /* hero fills almost the full phone screen before scrolling — content
+     centres in the extra vertical space instead of hugging the top */
+  .hero-dark { min-height: 92vh; display: flex; align-items: center; }
+  .hero-dark .hero-inner { width: 100%; }
+  /* About/Pricing/Audit heroes don't carry a full form like Home's does, so
+     a near-full-screen height leaves too much empty space — shorter and
+     consistent across all three; Home (hero-tall) keeps 92vh above */
+  .hero-dark:not(.hero-tall) { min-height: 50vh; }
+
+  /* ---------- inter-element spacing: reduced, never below ~12-16px ---------- */
+  .eyebrow + h1, .eyebrow + h2 { margin-top: 12px !important; }
+  h1 + p, h2 + p, h3 + p, .hero-dark p.hero-sub { margin-top: 12px !important; }
+  p + .btn, p + a.btn, p + button.btn, .form-note + .btn { margin-top: 16px !important; }
+  .section-lead, .section-lead.center { margin-bottom: 24px !important; }
+  .value-props, .card-row, .pricing-grid, .pricing-grid-preview, .incl-grid,
+  .form-grid-2, .footer-top, .approach-grid, .founder-grid, .industries-grid,
+  .industries-list, .services-grid, .preview-feat-list, .seo-grid {
+    gap: 16px !important;
+  }
+  .guarantees { gap: 16px !important; margin-top: 16px !important; }
+
+  /* ---------- cards / containers: 16-20px internal padding ---------- */
+  .pricing-card, .value-card, .card-col, .audit-form-card, [data-form-wrapper] {
+    padding: 18px !important;
+  }
+  .audit-form-body { padding: 18px !important; }
+  .audit-form-header { padding: 16px 18px !important; }
+  /* WhatsApp / email links under the form sit closer together */
+  .audit-contact-links { gap: var(--space-3) !important; }
+
+  /* ---------- buttons: comfortable tap targets ---------- */
+  .btn, .nav-cta, .mobile-cta { padding: 12px 20px !important; }
+  .btn-sm { padding: 12px 20px !important; min-height: 44px !important; }
+}
+
+/* ---------- hover effects, guarded so touch taps never get a stuck hover state ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .topbar a:hover { color: var(--color-blaze); }
+  .nav-link:hover { color: var(--color-blaze); }
+  .nav-cta:hover { opacity: 0.88; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-dark:hover { background: #1A2B34; }
+  .btn-forest:hover { opacity: 0.88; }
+  .btn-outline:hover { border-color: var(--color-blaze); color: var(--color-blaze); }
+  .btn-link:hover { opacity: 0.8; }
+  .value-card:hover { background: var(--color-off-white); transform: translateY(-6px); box-shadow: 0 26px 54px -30px rgba(8,55,49,0.3), 0 10px 22px -18px rgba(22,35,42,0.2); }
+  .card-col:hover { background-color: var(--color-off-white); }
+  .card-col .read-more:hover { gap: var(--space-3); }
+  .audit-contact-links a:hover { color: var(--color-blaze); }
+  .pricing-card:hover { border-color: var(--color-border-strong); box-shadow: 0 18px 40px -30px rgba(8,55,49,0.25); }
+  .footer-links a:hover { color: #fff; }
+}

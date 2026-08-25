@@ -1,0 +1,55 @@
+/* Summit Local SEO — design tokens, ported from the Sommet design system */
+/* Fonts are loaded via next/font/google in app/layout.js (see --font-dm-sans/--font-inter below), not this @import. */
+
+:root {
+  /* Primary palette */
+  --color-mirage:    #16232A; /* dark backgrounds, nav, footer */
+  --color-blaze:      #FF5B04; /* accent, CTAs, logo centre peak */
+  --color-deep-sea:   #074644; /* secondary, logo flanks, accents */
+  --color-wild-sand:  #E4EEF0; /* light surface, alternating sections */
+
+  /* Forest — used for the founder/approach chip accents on About & steps on Audit */
+  --forest:       #074644;
+  --forest-deep:  #052824;
+  --forest-chip:  #E7EFE9;
+
+  /* Supporting palette */
+  --color-off-white: #F7F9FA;
+  --color-ink:        #1A2B34;
+  --color-slate:       #8A9BA3;
+  --color-white:        #FFFFFF;
+
+  /* Badge fills */
+  --color-blaze-badge-bg: #FFF0E8;
+  --color-blaze-badge-fg: #C04400;
+  --color-teal-badge-bg:  #E1F0F0;
+  --color-teal-badge-fg:  #055057;
+
+  /* Borders */
+  --color-border:         #E0E8EB;
+  --color-border-strong:  #C8D5DA;
+  --color-border-card:    #E4EEF0;
+  --color-border-input:   #D0D8DC;
+  --color-border-hair:    rgba(0,0,0,0.06);
+
+  /* Type */
+  --font-display: var(--font-dm-sans), sans-serif;
+  --font-body:    var(--font-inter), sans-serif;
+
+  /* Spacing — golden-ratio scale (Fibonacci, each step ≈ previous × φ 1.618) */
+  --space-1: 5px;
+  --space-2: 8px;
+  --space-3: 13px;
+  --space-4: 21px;
+  --space-5: 34px;
+  --space-6: 55px;
+  --space-7: 89px;
+  --space-8: 144px;
+  --space-9: 233px;
+
+  /* Radius — brand direction is sharp, architectural edges. All 0. */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+}
