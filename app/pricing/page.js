@@ -29,7 +29,7 @@ export default function PricingPage() {
       {/* PRICING CARDS */}
 
       <PricingToggleBoundary>
-      <section className="section-off" data-reveal="hidden" style={{ padding: 'var(--space-7) var(--space-6) var(--space-7)' }}>
+      <section className="section-off pricing-intro-section" data-reveal="hidden" style={{ padding: 'var(--space-7) var(--space-6) var(--space-7)' }}>
         <div className="container-narrow" style={{ textAlign: 'center', marginBottom: '40px', padding: '0' }}>
           <h2 style={{ fontSize: '30px', letterSpacing: '-1.1px', lineHeight: '1.1' }} data-fr="Des tarifs adaptés à vos besoins." data-en="Pricing that suits your needs.">Des tarifs adaptés à vos besoins.</h2>
           <p style={{ fontSize: '14.5px', lineHeight: '1.7', color: 'var(--color-slate)', maxWidth: '480px', margin: '14px auto 0' }} data-fr="Une formule pour chaque étape de votre croissance. Sans engagement, résiliables à tout moment." data-en="A plan for every stage of your growth. No commitment, cancel anytime.">Une formule pour chaque étape de votre croissance. Sans engagement, résiliables à tout moment.</p>

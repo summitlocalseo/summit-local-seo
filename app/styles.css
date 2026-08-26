@@ -164,17 +164,12 @@ img, .image-cover { transition: transform 700ms cubic-bezier(0.22,0.61,0.36,1); 
 /* language switcher inside the mobile menu — a native select, dark-themed;
    the globe sits inside the box itself as a leading background icon,
    square corners (no pill shape) */
-.mobile-menu .mobile-lang { display: flex; align-items: center; justify-content: center; margin-top: var(--space-4); width: 100%; }
+.mobile-menu .mobile-lang { display: flex; align-items: center; margin-top: var(--space-4); }
 .mobile-menu .mobile-lang .lang-select {
   appearance: none; -webkit-appearance: none; -moz-appearance: none;
   font-family: var(--font-body); font-weight: 600; font-size: 14px; letter-spacing: 0.2px;
   color: #fff; background-color: transparent;
   border: 0.5px solid rgba(255,255,255,0.35); border-radius: 0;
-  /* explicit width, not intrinsic auto-sizing: some mobile browsers size a
-     native <select> wider than its CSS box (extra reserved space for their
-     own picker affordance survives -webkit-appearance:none), which can push
-     it past the mobile menu's edge with no width to cap it against */
-  width: 100%; max-width: 300px; box-sizing: border-box;
   min-height: 54px; padding: 14px 46px 14px 48px; cursor: pointer;
   background-image:
     url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="%23FFFFFF" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>'),
@@ -595,17 +590,25 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-mirage); margi
   /* that fixed-height spacer only exists to align prices across the two
      side-by-side desktop cards — meaningless once they're stacked */
   .pricing-align-spacer { height: 0 !important; }
-  .guarantees .item { justify-content: center; }
+  /* left-aligned, not centred */
+  .guarantees { justify-content: flex-start !important; }
+  .guarantees .item { justify-content: flex-start; }
   /* less space between the CTA button and the "what's included" list below it */
   .pricing-divider { margin: 12px 0 !important; }
+  /* no scroll-triggered fade on the pricing intro heading/text — visible
+     immediately on load rather than waiting for a scroll to trigger it */
+  .pricing-intro-section[data-reveal] { opacity: 1 !important; transform: none !important; }
 
-  /* pricing page "always included" cards: icon stacks above centred title/text */
-  .incl-item { display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; }
-  .incl-item .icon { justify-content: center !important; margin-bottom: var(--space-2) !important; }
+  /* pricing page "always included" cards: left-aligned, icon above title/text,
+     more breathing room between the three stacked cards */
+  .incl-grid { gap: var(--space-6) !important; }
+  .incl-item { display: flex !important; flex-direction: column !important; align-items: flex-start !important; text-align: left !important; }
+  .incl-item .icon { justify-content: flex-start !important; margin-bottom: var(--space-2) !important; }
 
-  /* pricing card "Recommandé" badge: sits above the icon instead of floating
-     in the corner (which doesn't work once the card is centred on mobile) */
-  .pricing-badge { position: static !important; order: -1; margin: 0 0 var(--space-3) !important; }
+  /* pricing card "Recommandé" badge: sits below the icon (its natural DOM
+     order) instead of floating in the corner, which doesn't work once the
+     card no longer has room for an absolutely-positioned badge on mobile */
+  .pricing-badge { position: static !important; margin: var(--space-3) 0 var(--space-3) !important; }
 
   /* section leads and any left-aligned copy column stay readable but centred */
   .section-lead, .section-lead.center { max-width: 460px; margin-left: auto; margin-right: auto; text-align: center; }
@@ -657,7 +660,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-mirage); margi
   .approach-grid { opacity: 1 !important; transform: none !important; }
   /* "what guides us" cards: each item's own padding + internal icon/title/text
      margins were sized for a 3-across desktop row — tighten for a stacked list */
-  .approach-grid > div { padding: var(--space-4) var(--space-4) !important; }
+  .approach-grid > div { padding: var(--space-4) var(--space-4) !important; text-align: left !important; }
   .approach-grid > div > div:first-child { margin-bottom: var(--space-3) !important; }
   .approach-grid > div > div:nth-child(2) { margin-bottom: var(--space-2) !important; }
   .approach-photo {
@@ -780,6 +783,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-mirage); margi
     gap: 16px !important;
   }
   .guarantees { gap: 16px !important; margin-top: 16px !important; }
+  .incl-grid { gap: var(--space-6) !important; }
 
   /* ---------- cards / containers: 16-20px internal padding ---------- */
   .pricing-card, .value-card, .card-col, .audit-form-card, [data-form-wrapper] {
