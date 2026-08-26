@@ -601,7 +601,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-mirage); margi
 
   /* pricing page "always included" cards: left-aligned, icon above title/text,
      more breathing room between the three stacked cards */
-  .incl-grid { gap: var(--space-3) !important; }
+  .incl-grid { gap: var(--space-4) !important; }
   .incl-item { display: flex !important; flex-direction: column !important; align-items: flex-start !important; text-align: left !important; }
   .incl-item .icon { justify-content: flex-start !important; margin-bottom: var(--space-2) !important; }
 
@@ -650,7 +650,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-mirage); margi
   /* About "our approach" — sharp clipped photo overlay doesn't reflow at
      this width either; drop it to a plain full-width photo under the grid */
   .approach-wrap { margin-top: var(--space-4); }
-  .approach-grid { width: 100% !important; gap: var(--space-3) !important; }
+  .approach-grid { width: 100% !important; gap: var(--space-4) !important; }
   /* "the founder" eyebrow/heading stay left-aligned instead of inheriting
      the centred text-align that the collapsed 2-col grid applies generally
      (the long-copy paragraphs already have their own left-align exception) */
@@ -783,8 +783,8 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-mirage); margi
     gap: 16px !important;
   }
   .guarantees { gap: 16px !important; margin-top: 16px !important; }
-  .incl-grid { gap: var(--space-3) !important; }
-  .approach-grid { gap: var(--space-3) !important; }
+  .incl-grid { gap: var(--space-4) !important; }
+  .approach-grid { gap: var(--space-4) !important; }
 
   /* ---------- cards / containers: 16-20px internal padding ---------- */
   .pricing-card, .value-card, .card-col, .audit-form-card, [data-form-wrapper] {
