@@ -1,4 +1,4 @@
-const SITE_URL = 'https://www.summitlocalseo.be';
+const SITE_URL = 'https://www.summitseo.be';
 
 export default function robots() {
   return {

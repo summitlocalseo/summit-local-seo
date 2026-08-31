@@ -4,7 +4,7 @@ import ZoneCrossLinks from '../../components/ZoneCrossLinks';
 import HeroForm from '../../components/HeroForm';
 import DemoMockup from '../../components/DemoMockup';
 
-const SITE_URL = 'https://www.summitlocalseo.be';
+const SITE_URL = 'https://www.summitseo.be';
 
 export const metadata = {
   title: { absolute: 'Référencement Local à Liège — Summit Local SEO' },

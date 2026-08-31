@@ -4,8 +4,7 @@ import './styles.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-// NOTE: placeholder domain — update once the site is actually hosted (see summary flag).
-const SITE_URL = 'https://www.summitlocalseo.be';
+const SITE_URL = 'https://www.summitseo.be';
 
 const dmSans = DM_Sans({
   subsets: ['latin', 'latin-ext'],
