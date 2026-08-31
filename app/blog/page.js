@@ -18,8 +18,10 @@ const POSTS = [
   {
     slug: 'pourquoi-mon-entreprise-napparait-pas-sur-google-maps',
     title: "Pourquoi mon entreprise n'apparaît pas sur Google Maps ?",
+    titleEn: "Why doesn't my business show up on Google Maps?",
     excerpt:
       "9 raisons courantes qui empêchent votre entreprise d'apparaître sur Google Maps, et comment les corriger.",
+    excerptEn: "9 common reasons that keep your business from showing up on Google Maps, and how to fix them.",
     date: '2026-08-31',
   },
 ];
@@ -30,15 +32,15 @@ export default function BlogIndexPage() {
       {/* HERO */}
       <section className="hero-dark hero-centered" style={{ backgroundImage: 'linear-gradient(90deg, rgba(7,70,68,0) 0%, rgba(7,70,68,0.55) 100%), linear-gradient(120deg, rgba(18,22,24,0.92) 0%, rgba(24,30,32,0.78) 48%, rgba(30,38,40,0.55) 100%), url(\'/assets/img/audit-hero.jpg\')' }}>
         <div className="hero-inner">
-          <h1 style={{ fontSize: '42px', letterSpacing: '-1.6px', lineHeight: '1.06' }}>Blog</h1>
+          <h1 style={{ fontSize: '42px', letterSpacing: '-1.6px', lineHeight: '1.06' }} data-fr="Blog" data-en="Blog">Blog</h1>
         </div>
       </section>
 
       {/* POSTS LIST */}
       <section className="section-off" data-reveal="hidden" style={{ padding: 'var(--space-7) var(--space-6)' }}>
         <div className="container-narrow" style={{ padding: '0' }}>
-          <span className="eyebrow">Conseils SEO local</span>
-          <h2 style={{ fontSize: '28px', letterSpacing: '-1px', lineHeight: '1.15', margin: '14px 0 32px' }}>Nos derniers articles.</h2>
+          <span className="eyebrow" data-fr="Conseils SEO local" data-en="Local SEO tips">Conseils SEO local</span>
+          <h2 style={{ fontSize: '28px', letterSpacing: '-1px', lineHeight: '1.15', margin: '14px 0 32px' }} data-fr="Nos derniers articles." data-en="Our latest articles.">Nos derniers articles.</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
             {POSTS.map((post) => (
               <article
@@ -50,12 +52,12 @@ export default function BlogIndexPage() {
                 </div>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: '600', fontSize: '20px', letterSpacing: '-0.4px', margin: '0 0 10px' }}>
                   <Link href={`/blog/${post.slug}`} style={{ color: 'var(--color-mirage)', textDecoration: 'none' }}>
-                    {post.title}
+                    <span data-fr={post.title} data-en={post.titleEn}>{post.title}</span>
                   </Link>
                 </h3>
-                <p style={{ fontSize: '14px', lineHeight: '1.7', color: 'var(--color-slate)', margin: '0 0 16px' }}>{post.excerpt}</p>
+                <p style={{ fontSize: '14px', lineHeight: '1.7', color: 'var(--color-slate)', margin: '0 0 16px' }} data-fr={post.excerpt} data-en={post.excerptEn}>{post.excerpt}</p>
                 <Link href={`/blog/${post.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: '600', color: 'var(--color-blaze)', textDecoration: 'none' }}>
-                  <span>Lire l'article</span>
+                  <span data-fr="Lire l'article" data-en="Read the article">Lire l'article</span>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12l14 0" />
                     <path d="M13 18l6 -6" />
