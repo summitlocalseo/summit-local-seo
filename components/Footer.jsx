@@ -25,6 +25,7 @@ export default function Footer() {
             <Link href="/" data-fr="Accueil" data-en="Home">Accueil</Link>
             <Link href="/pricing" data-fr="Tarifs" data-en="Pricing">Tarifs</Link>
             <Link href="/audit" data-fr="Demander un audit" data-en="Request an audit">Demander un audit</Link>
+            <Link href="/blog" data-fr="Blog" data-en="Blog">Blog</Link>
           </nav>
         </div>
         <div>
