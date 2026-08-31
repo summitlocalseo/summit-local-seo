@@ -7,14 +7,14 @@ import DemoMockup from '../../components/DemoMockup';
 const SITE_URL = 'https://www.summitseo.be';
 
 export const metadata = {
-  title: { absolute: 'Référencement Local à Charleroi — Summit Local SEO' },
+  title: { absolute: 'Agence SEO Charleroi | Référencement Naturel Local' },
   description:
-    "Summit aide les artisans et indépendants de Charleroi à apparaître en tête de Google et Google Maps. Audit de visibilité locale gratuit, sans engagement.",
+    "Summit accompagne les artisans et indépendants de Charleroi vers la première page Google. Optimisation locale, citations, résultats concrets et mesurables.",
   alternates: { canonical: '/charleroi' },
   openGraph: {
-    title: 'Référencement Local à Charleroi — Summit Local SEO',
+    title: 'Agence SEO Charleroi | Référencement Naturel Local',
     description:
-      "Summit aide les artisans et indépendants de Charleroi à apparaître en tête de Google et Google Maps. Audit de visibilité locale gratuit, sans engagement.",
+      "Summit accompagne les artisans et indépendants de Charleroi vers la première page Google. Optimisation locale, citations, résultats concrets et mesurables.",
     url: '/charleroi',
   },
 };
@@ -44,7 +44,7 @@ export default function CharleroiPage() {
               <span style={{ width: '18px', height: '1px', background: 'var(--color-blaze)' }} />
               <span data-fr="Référencement local · Charleroi" data-en="Local SEO · Charleroi">Référencement local · Charleroi</span>
             </span>
-            <h1 style={{ fontSize: '46px', letterSpacing: '-1.8px', lineHeight: '1.05', color: '#fff', margin: '20px 0 0' }} data-fr="Soyez trouvé en premier à Charleroi." data-en="Get found first in Charleroi.">Soyez trouvé en premier à Charleroi.</h1>
+            <h1 style={{ fontSize: '40px', letterSpacing: '-1.6px', lineHeight: '1.08', color: '#fff', margin: '20px 0 0' }} data-fr="Référencement Local à Charleroi pour Artisans et Indépendants" data-en="Local SEO in Charleroi for Tradespeople and Independents">Référencement Local à Charleroi pour Artisans et Indépendants</h1>
             <p className="hero-sub" style={{ maxWidth: '440px' }} data-fr="Charleroi se réinvente vite — numérique, aéroport, centre-ville rénové. Nous aidons les artisans et indépendants carolos à transformer leur réputation de terrain en visibilité Google." data-en="Charleroi is reinventing itself fast — digital, airport, a renovated city centre. We help Charleroi tradespeople and independents turn their on-the-ground reputation into Google visibility.">Charleroi se réinvente vite — numérique, aéroport, centre-ville rénové. Nous aidons les artisans et indépendants carolos à transformer leur réputation de terrain en visibilité Google.</p>
           </div>
           <div style={{ background: 'var(--color-white)', padding: '34px', maxWidth: '380px', justifySelf: 'end', width: '100%', minHeight: '392px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} data-form-wrapper>
@@ -93,6 +93,7 @@ export default function CharleroiPage() {
             <h2 style={{ fontSize: '30px', letterSpacing: '-1.1px', lineHeight: '1.1', margin: '14px 0 0' }} data-fr="Une ville en pleine reconversion, où la visibilité en ligne se construit encore." data-en="A city mid-reconversion, where online visibility is still being built.">Une ville en pleine reconversion, où la visibilité en ligne se construit encore.</h2>
             <p style={{ fontSize: '14.5px', lineHeight: '1.8', color: 'var(--color-slate)', margin: '20px 0 0' }} data-fr="Ancien cœur industriel de la Wallonie, Charleroi s'est profondément réinventée : essor du numérique et des start-ups, aéroport devenu un hub majeur du trafic aérien belge, quartiers du centre-ville en rénovation. Beaucoup d'artisans et d'indépendants carolos ont bâti leur réputation sur le bouche-à-oreille, mais n'ont pas encore une présence Google à la hauteur de leur savoir-faire." data-en="Once Wallonia's industrial heartland, Charleroi has profoundly reinvented itself: a rise of digital and start-ups, an airport that's become a major Belgian air traffic hub, city-centre neighbourhoods under renovation. Many Charleroi tradespeople and independents built their reputation on word of mouth, but don't yet have a Google presence to match their skill.">Ancien cœur industriel de la Wallonie, Charleroi s'est profondément réinventée : essor du numérique et des start-ups, aéroport devenu un hub majeur du trafic aérien belge, quartiers du centre-ville en rénovation. Beaucoup d'artisans et d'indépendants carolos ont bâti leur réputation sur le bouche-à-oreille, mais n'ont pas encore une présence Google à la hauteur de leur savoir-faire.</p>
             <p style={{ fontSize: '14.5px', lineHeight: '1.8', color: 'var(--color-slate)', margin: '16px 0 0' }} data-fr="C'est précisément là que le référencement local change la donne : une fiche Google Business bien optimisée et un site structuré pour les recherches locales permettent de capter une demande qui existe déjà en ligne." data-en="This is exactly where local SEO changes things: a well-optimized Google Business Profile and a site structured for local search let you capture demand that already exists online.">C'est précisément là que le référencement local change la donne : une fiche Google Business bien optimisée et un site structuré pour les recherches locales permettent de capter une demande qui existe déjà en ligne.</p>
+            <p style={{ fontSize: '14.5px', lineHeight: '1.8', color: 'var(--color-slate)', margin: '16px 0 0' }} data-fr="À Charleroi, de plus en plus de clients cherchent d'abord sur Google avant de choisir un artisan ou un indépendant — être visible localement n'est plus optionnel. Basé à Charleroi centre, Marcinelle, Gilly ou Gosselies, Summit vous aide à apparaître dans les recherches locales et sur Google Maps, avec un suivi mensuel clair de vos résultats." data-en="In Charleroi, more and more customers search on Google first before choosing a tradesperson or independent — being locally visible is no longer optional. Based in Charleroi centre, Marcinelle, Gilly, or Gosselies, Summit helps you show up in local searches and on Google Maps, with clear monthly tracking of your results.">À Charleroi, de plus en plus de clients cherchent d'abord sur Google avant de choisir un artisan ou un indépendant — être visible localement n'est plus optionnel. Basé à Charleroi centre, Marcinelle, Gilly ou Gosselies, Summit vous aide à apparaître dans les recherches locales et sur Google Maps, avec un suivi mensuel clair de vos résultats.</p>
           </div>
           <div style={{ background: 'var(--color-white)', border: '0.5px solid var(--color-border-card)', padding: 'var(--space-5)' }}>
             <div style={{ fontWeight: '700', fontSize: '12px', letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--color-mirage)', marginBottom: '16px' }} data-fr="Nous accompagnons notamment à Charleroi" data-en="We notably work with, in Charleroi">Nous accompagnons notamment à Charleroi</div>

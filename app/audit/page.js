@@ -1,5 +1,6 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import AuditForm from '../../components/AuditForm';
+import { FaqAccordionBoundary } from '../../components/FaqAccordion';
 
 export const metadata = {
   title: { absolute: 'Audit Gratuit de Visibilité Locale — Summit SEO' },
@@ -14,11 +15,47 @@ export const metadata = {
   },
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: "Pourquoi mon entreprise n'apparaît pas sur Google Maps ?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Plusieurs raisons possibles : votre fiche Google Business Profile n'est pas complètement optimisée, elle manque de mots-clés locaux, vous n'avez pas assez d'avis clients, ou vos informations (adresse, horaires, catégorie) sont incomplètes ou incohérentes. Un audit gratuit permet d'identifier exactement ce qui bloque votre visibilité.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Combien de temps faut-il pour voir des résultats en référencement local ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Les premiers changements (fiche Google Business optimisée) peuvent avoir un impact en quelques semaines. Pour un classement stable et durable dans les résultats de recherche, comptez généralement entre 2 et 4 mois, selon la concurrence dans votre secteur et votre ville.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Le référencement local, est-ce que ça marche pour les petites entreprises et indépendants ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Oui — c'est même là que le référencement local a le plus d'impact, car vous n'êtes pas en concurrence avec des entreprises nationales, mais avec d'autres acteurs de votre région. Une fiche bien optimisée et quelques citations locales suffisent souvent à faire une vraie différence.",
+      },
+    },
+  ],
+};
+
 export default function AuditPage() {
   return (
     <ScrollReveal>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
       {/* DARK HERO */}
-      
+
       <section className="hero-dark" style={{ paddingBottom: '130px', backgroundImage: 'linear-gradient(90deg, rgba(7,70,68,0) 0%, rgba(7,70,68,0.55) 100%), linear-gradient(120deg, rgba(18,22,24,0.92) 0%, rgba(24,30,32,0.78) 48%, rgba(30,38,40,0.55) 100%), url(\'/assets/img/audit-hero.jpg\')' }}>
         <div className="hero-inner">
           <span className="eyebrow" data-fr="Audit gratuit" data-en="Free audit">Audit gratuit</span>
@@ -26,9 +63,9 @@ export default function AuditPage() {
           <p className="hero-sub" data-fr="Remplissez le formulaire. Nous analysons votre présence sur Google et vous envoyons un plan d'action concret sous 48 heures ouvrables, sans engagement." data-en="Fill in the form. We analyze your presence on Google and send you a concrete action plan within 48 business hours, no commitment.">Remplissez le formulaire. Nous analysons votre présence sur Google et vous envoyons un plan d'action concret sous 48 heures ouvrables, sans engagement.</p>
         </div>
       </section>
-      
+
       {/* STEPS + FORM */}
-      
+
       <section className="section-off" data-reveal="hidden" style={{ padding: '0 var(--space-6) var(--space-7)' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 'var(--space-6)', alignItems: 'start', padding: '0' }}>
           {/* form card overlapping the hero — visually second on desktop (original design), first on phones */}
@@ -102,6 +139,61 @@ export default function AuditPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+
+      <FaqAccordionBoundary>
+      <section className="section-white" data-reveal="hidden" style={{ padding: 'var(--space-7) var(--space-6)' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: '0.82fr 1.18fr', gap: 'var(--space-6)', alignItems: 'start', padding: '0' }}>
+          <div>
+            <span className="eyebrow" data-fr="Questions fréquentes" data-en="Frequently asked">Questions fréquentes</span>
+            <h2 style={{ fontSize: '32px', letterSpacing: '-1px', margin: '14px 0 0' }} data-fr="Vos questions sur l'audit et le référencement local." data-en="Your questions about the audit and local SEO.">Vos questions sur l'audit et le référencement local.</h2>
+            <p style={{ fontSize: '14.5px', lineHeight: '1.75', color: 'var(--color-slate)', margin: '16px 0 0', maxWidth: '300px' }} data-fr="Vous ne trouvez pas votre réponse ? Écrivez-nous, on vous répond sous 48h." data-en="Can't find your answer? Write to us and we'll reply within 48h.">Vous ne trouvez pas votre réponse ? Écrivez-nous, on vous répond sous 48h.</p>
+          </div>
+          <div className="faq-list" style={{ borderTop: '0.5px solid var(--color-border-card)' }}>
+            <div className="faq-item" data-reveal="hidden">
+              <button className="faq-question">
+                <span data-fr="Pourquoi mon entreprise n'apparaît pas sur Google Maps ?" data-en="Why doesn't my business show up on Google Maps?">Pourquoi mon entreprise n'apparaît pas sur Google Maps ?</span>
+                <span className="faq-chevron">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 9l6 6l6 -6" />
+                  </svg>
+                </span>
+              </button>
+              <div className="faq-answer">
+                <p data-fr="Plusieurs raisons possibles : votre fiche Google Business Profile n'est pas complètement optimisée, elle manque de mots-clés locaux, vous n'avez pas assez d'avis clients, ou vos informations (adresse, horaires, catégorie) sont incomplètes ou incohérentes. Un audit gratuit permet d'identifier exactement ce qui bloque votre visibilité." data-en="There are several possible reasons: your Google Business Profile isn't fully optimized, it's missing local keywords, you don't have enough customer reviews, or your information (address, hours, category) is incomplete or inconsistent. A free audit identifies exactly what's blocking your visibility.">Plusieurs raisons possibles : votre fiche Google Business Profile n'est pas complètement optimisée, elle manque de mots-clés locaux, vous n'avez pas assez d'avis clients, ou vos informations (adresse, horaires, catégorie) sont incomplètes ou incohérentes. Un audit gratuit permet d'identifier exactement ce qui bloque votre visibilité.</p>
+              </div>
+            </div>
+            <div className="faq-item" data-reveal="hidden" style={{ transitionDelay: '80ms' }}>
+              <button className="faq-question">
+                <span data-fr="Combien de temps faut-il pour voir des résultats en référencement local ?" data-en="How long does it take to see results from local SEO?">Combien de temps faut-il pour voir des résultats en référencement local ?</span>
+                <span className="faq-chevron">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 9l6 6l6 -6" />
+                  </svg>
+                </span>
+              </button>
+              <div className="faq-answer">
+                <p data-fr="Les premiers changements (fiche Google Business optimisée) peuvent avoir un impact en quelques semaines. Pour un classement stable et durable dans les résultats de recherche, comptez généralement entre 2 et 4 mois, selon la concurrence dans votre secteur et votre ville." data-en="The first changes (an optimized Google Business Profile) can have an impact within a few weeks. For a stable, lasting ranking in search results, expect generally 2 to 4 months, depending on competition in your industry and city.">Les premiers changements (fiche Google Business optimisée) peuvent avoir un impact en quelques semaines. Pour un classement stable et durable dans les résultats de recherche, comptez généralement entre 2 et 4 mois, selon la concurrence dans votre secteur et votre ville.</p>
+              </div>
+            </div>
+            <div className="faq-item" data-reveal="hidden" style={{ transitionDelay: '160ms' }}>
+              <button className="faq-question">
+                <span data-fr="Le référencement local, est-ce que ça marche pour les petites entreprises et indépendants ?" data-en="Does local SEO work for small businesses and independents?">Le référencement local, est-ce que ça marche pour les petites entreprises et indépendants ?</span>
+                <span className="faq-chevron">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 9l6 6l6 -6" />
+                  </svg>
+                </span>
+              </button>
+              <div className="faq-answer">
+                <p data-fr="Oui — c'est même là que le référencement local a le plus d'impact, car vous n'êtes pas en concurrence avec des entreprises nationales, mais avec d'autres acteurs de votre région. Une fiche bien optimisée et quelques citations locales suffisent souvent à faire une vraie différence." data-en="Yes — that's actually where local SEO has the most impact, since you're not competing with national companies, but with other players in your region. A well-optimized profile and a few local citations are often enough to make a real difference.">Oui — c'est même là que le référencement local a le plus d'impact, car vous n'êtes pas en concurrence avec des entreprises nationales, mais avec d'autres acteurs de votre région. Une fiche bien optimisée et quelques citations locales suffisent souvent à faire une vraie différence.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </FaqAccordionBoundary>
     </ScrollReveal>
   );
 }
