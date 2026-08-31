@@ -87,7 +87,7 @@ export default function NamurPage() {
 
       {/* CONTEXT + WHO WE HELP */}
       <section className="section-off" data-reveal="hidden" style={{ padding: 'var(--space-7) var(--space-6)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)', alignItems: 'start', padding: '0' }}>
+        <div className="container market-section" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)', alignItems: 'start', padding: '0' }}>
           <div>
             <span className="eyebrow" data-fr="Le marché namurois" data-en="The Namur market">Le marché namurois</span>
             <h2 style={{ fontSize: '30px', letterSpacing: '-1.1px', lineHeight: '1.1', margin: '14px 0 0' }} data-fr="Capitale administrative de la Wallonie, et un marché local à taille humaine." data-en="Wallonia's administrative capital, and a local market on a human scale.">Capitale administrative de la Wallonie, et un marché local à taille humaine.</h2>

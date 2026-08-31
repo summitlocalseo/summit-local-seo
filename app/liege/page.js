@@ -87,7 +87,7 @@ export default function LiegePage() {
 
       {/* CONTEXT + WHO WE HELP */}
       <section className="section-off" data-reveal="hidden" style={{ padding: 'var(--space-7) var(--space-6)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)', alignItems: 'start', padding: '0' }}>
+        <div className="container market-section" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)', alignItems: 'start', padding: '0' }}>
           <div>
             <span className="eyebrow" data-fr="Le marché liégeois" data-en="The Liège market">Le marché liégeois</span>
             <h2 style={{ fontSize: '30px', letterSpacing: '-1.1px', lineHeight: '1.1', margin: '14px 0 0' }} data-fr="Une agglomération dense, une concurrence Google à l'avenant." data-en="A dense city, and Google competition to match.">Une agglomération dense, une concurrence Google à l'avenant.</h2>

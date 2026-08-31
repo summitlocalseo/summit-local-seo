@@ -87,7 +87,7 @@ export default function CharleroiPage() {
 
       {/* CONTEXT + WHO WE HELP */}
       <section className="section-off" data-reveal="hidden" style={{ padding: 'var(--space-7) var(--space-6)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)', alignItems: 'start', padding: '0' }}>
+        <div className="container market-section" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)', alignItems: 'start', padding: '0' }}>
           <div>
             <span className="eyebrow" data-fr="Le marché carolo" data-en="The Charleroi market">Le marché carolo</span>
             <h2 style={{ fontSize: '30px', letterSpacing: '-1.1px', lineHeight: '1.1', margin: '14px 0 0' }} data-fr="Une ville en pleine reconversion, où la visibilité en ligne se construit encore." data-en="A city mid-reconversion, where online visibility is still being built.">Une ville en pleine reconversion, où la visibilité en ligne se construit encore.</h2>

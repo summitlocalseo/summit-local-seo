@@ -522,6 +522,9 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-mirage); margi
     text-align: center !important;
     padding-left: 0 !important;
   }
+  /* city landing pages' "market" section (Liège/Charleroi/Namur) — left
+     aligned, not centred like the generic .container collapse above */
+  .market-section { text-align: left !important; }
   .preview-feat-list { gap: var(--space-3) !important; }
   .value-props > *, .pricing-grid-preview > * {
     justify-self: center; width: 100%; max-width: 460px; min-width: 0;
